@@ -9,6 +9,7 @@ export default function Contact(){
     e.preventDefault()
     const form = new FormData(e.currentTarget)
     const payload = Object.fromEntries(form.entries())
+    payload.källa = 'webbplats'
     setLoading(true)
     setStatus(null)
     try {
@@ -33,6 +34,7 @@ export default function Contact(){
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(244,63,94,0.07),transparent_60%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(244,63,94,0.12),transparent_60%)]"/>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.h2 initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:0.6}} className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Kontakta oss</motion.h2>
+        <p className="mt-3 max-w-3xl text-gray-700/90 dark:text-gray-300">Berätta kort vad du vill göra så återkommer vi med ett snabbt estimat och ett förslag på nästa steg.</p>
         <div className="mt-10 grid lg:grid-cols-2 gap-8">
           <div className="rounded-2xl border border-gray-900/10 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur p-6">
             <form onSubmit={handleSubmit} className="grid gap-4">
@@ -58,12 +60,14 @@ export default function Contact(){
                   <option>Fasad</option>
                   <option>Altan</option>
                   <option>Kök & Badrum</option>
+                  <option>Byggservice Företag</option>
                 </select>
               </div>
               <div>
                 <label className="block text-sm text-gray-700 dark:text-gray-300">Meddelande</label>
                 <textarea name="meddelande" rows="4" className="mt-1 w-full rounded-xl border border-gray-900/10 dark:border-white/10 bg-white/70 dark:bg-white/5 px-3 py-2 outline-none focus:ring-2 focus:ring-rose-500"/>
               </div>
+              <input type="hidden" name="källa" value="webbplats" />
               <div className="flex flex-wrap items-center gap-4">
                 <button disabled={loading} className="inline-flex h-11 items-center rounded-xl bg-gradient-to-r from-red-600 to-rose-600 px-6 text-white font-semibold shadow-lg shadow-red-600/30 disabled:opacity-60">
                   {loading ? 'Skickar…' : 'Skicka förfrågan'}
@@ -83,7 +87,7 @@ export default function Contact(){
               <div>Org.nr: 559000-0000</div>
             </div>
             <div className="mt-6 h-64 rounded-xl overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1760764541302-e3955fbc6b2b?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxjZXJhbWljJTIwcG90dGVyeSUyMGhhbmRtYWRlfGVufDB8MHx8fDE3NjMzMDU0MTN8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80" alt="" className="w-full h-full object-cover"/>
+              <img src="https://images.unsplash.com/photo-1760764541302-e3955fbc6b2b?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxjZXJhbWljJTIwcG90dGVyeSUyMGhhbmRtYWRlfGVufDB8MHx8fDE3NjMzMDU0MTN8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80" alt="Kontor och verkstad" className="w-full h-full object-cover"/>
             </div>
           </div>
         </div>
